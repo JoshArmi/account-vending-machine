@@ -116,6 +116,14 @@
           "exec": "pytest"
         }
       ]
+    },
+    "watch -- -m": {
+      "name": "watch -- -m",
+      "steps": [
+        {
+          "exec": "ptw"
+        }
+      ]
     }
   },
   "env": {

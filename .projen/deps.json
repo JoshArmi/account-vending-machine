@@ -1,9 +1,45 @@
 {
   "dependencies": [
     {
+      "name": "black",
+      "type": "devenv"
+    },
+    {
+      "name": "mypy",
+      "type": "devenv"
+    },
+    {
       "name": "projen",
       "version": "0.79.0",
       "type": "devenv"
+    },
+    {
+      "name": "pytest",
+      "type": "devenv"
+    },
+    {
+      "name": "pytest-cov",
+      "type": "devenv"
+    },
+    {
+      "name": "pytest-watch",
+      "type": "devenv"
+    },
+    {
+      "name": "pydantic",
+      "type": "runtime"
+    },
+    {
+      "name": "python-hcl2",
+      "type": "runtime"
+    },
+    {
+      "name": "pyyaml",
+      "type": "runtime"
+    },
+    {
+      "name": "types-pyyaml",
+      "type": "runtime"
     },
     {
       "name": "pytest",
