@@ -1,4 +1,4 @@
-from projen import PythonProject
+from projen.python import PythonProject
 
 project = PythonProject(
     author_email="josh.armitage@outlook.com",
@@ -6,7 +6,6 @@ project = PythonProject(
     module_name="account_vending_machine",
     name="account-vending-machine",
     version="0.1.0",
-    dev_deps=["mypy"],
 )
 
 project.synth()
