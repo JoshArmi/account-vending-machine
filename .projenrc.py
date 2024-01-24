@@ -15,5 +15,6 @@ project = PythonProject(
 project.add_task("watch -- -m", exec="ptw")
 
 project.add_git_ignore("*.tf")
+project.add_git_ignore("./terraform")
 
 project.synth()
