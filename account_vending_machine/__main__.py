@@ -1,2 +1,4 @@
+from account_vending_machine.entrypoints import run
+
 if __name__ == "__main__":
-    pass  # pragma: no cover
+    run()  # pragma: no cover

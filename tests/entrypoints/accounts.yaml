@@ -1,0 +1,24 @@
+organizational_units:
+  - Workloads
+  - Security
+  - Suspended
+  - Infrastructure
+  - Policy Staging
+  - Quarantine
+
+accounts:
+  - name: joshs-test-account-2
+    roles:
+      AWSAdministratorAccess:
+        - josh.armitage@contino.io
+    tags:
+      owner: josh.armitage@contino.io
+      costcode: 1234
+
+  - name: joshs-test-account-3
+    roles:
+      AWSPowerUserAccess:
+        - josh.armitage@contino.io
+    tags:
+      owner: josh.armitage@contino.io
+      costcode: 1234

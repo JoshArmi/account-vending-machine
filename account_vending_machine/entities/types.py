@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 
 
@@ -12,6 +13,7 @@ class ImportOptions(BaseModel):
 
 class AccountRequest(BaseModel):
     name: str
+    email_override: Optional[str] = None
     import_resource: ImportOptions = ImportOptions()
 
 
@@ -19,3 +21,11 @@ class Account(BaseModel):
     email: str
     name: str
     import_resource: ImportOptions = ImportOptions()
+
+
+class OrganizationalUnitRequest(BaseModel):
+    name: str
+
+
+class OrganizationalUnit(BaseModel):
+    name: str

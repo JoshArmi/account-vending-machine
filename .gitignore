@@ -84,5 +84,7 @@ dmypy.json
 .pytype/
 cython_debug/
 *.tf
-./terraform
+**/.terraform/*
+output.json
+output.tfplan
 !/.projenrc.py

@@ -12,9 +12,15 @@ project = PythonProject(
     version="0.1.0",
 )
 
-project.add_task("watch -- -m", exec="ptw")
+project.add_task("watch", exec="ptw -- -m 'not integration'")
+project.add_task("plan", exec="python -m account_vending_machine")
+project.add_task("apply", exec="terraform apply -auto-approve output.tfplan")
 
 project.add_git_ignore("*.tf")
-project.add_git_ignore("./terraform")
+project.add_git_ignore("*.tfstate")
+project.add_git_ignore("*.tfstate.*")
+project.add_git_ignore("**/.terraform/*")
+project.add_git_ignore("output.json")
+project.add_git_ignore("output.tfplan")
 
 project.synth()

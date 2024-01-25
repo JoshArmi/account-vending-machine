@@ -1,5 +1,9 @@
+organizational_units:
+  - Workloads
+  - Security
+
 accounts:
-  - name: account-management
-    roles:
-      Administrator:
-        - josh@thearmitagency.com
+  - name: josharmi
+    email_override: josh.armitage@outlook.com
+    import:
+      id: "941044151014"

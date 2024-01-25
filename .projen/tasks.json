@@ -1,5 +1,13 @@
 {
   "tasks": {
+    "apply": {
+      "name": "apply",
+      "steps": [
+        {
+          "exec": "terraform apply -auto-approve output.tfplan"
+        }
+      ]
+    },
     "build": {
       "name": "build",
       "description": "Full release build",
@@ -100,6 +108,14 @@
       "name": "package",
       "description": "Creates the distribution package"
     },
+    "plan": {
+      "name": "plan",
+      "steps": [
+        {
+          "exec": "python -m account_vending_machine"
+        }
+      ]
+    },
     "post-compile": {
       "name": "post-compile",
       "description": "Runs after successful compilation"
@@ -117,11 +133,11 @@
         }
       ]
     },
-    "watch -- -m": {
-      "name": "watch -- -m",
+    "watch": {
+      "name": "watch",
       "steps": [
         {
-          "exec": "ptw"
+          "exec": "ptw -- -m 'not integration'"
         }
       ]
     }

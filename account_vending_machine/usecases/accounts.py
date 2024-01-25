@@ -9,5 +9,7 @@ def handle_account_request(config: Configuration, request: AccountRequest) -> Ac
     tokens = config.base_email.split("@")
     email = tokens[0] + "+" + request.name + "@" + tokens[1]
     return Account(
-        email=email, name=request.name, import_resource=request.import_resource
+        email=email if not request.email_override else request.email_override,
+        name=request.name,
+        import_resource=request.import_resource,
     )
