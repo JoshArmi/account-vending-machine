@@ -5,9 +5,5 @@ organizational_units:
 accounts:
   - name: josharmi
     email_override: josh.armitage@outlook.com
-    import:
-      id: "941044151014"
   - name: sandbox-alpha
     email_override: joshscomputerhelp+sandbox.alpha@gmail.com
-    import:
-      id: "527937274367"
