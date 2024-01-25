@@ -11,7 +11,7 @@ First assume a sufficiently privileged role in your root account. (I'd suggest u
 ### To see what changes will be made:
 
 ```bash
-npx projen
+npx projen plan
 ```
 
 ### To apply changes:
