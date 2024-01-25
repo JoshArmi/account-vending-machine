@@ -12,4 +12,7 @@ def handle_account_request(config: Configuration, request: AccountRequest) -> Ac
         email=email if not request.email_override else request.email_override,
         name=request.name,
         import_resource=request.import_resource,
+        organizational_unit=request.organizational_unit
+        if request.organizational_unit
+        else None,
     )

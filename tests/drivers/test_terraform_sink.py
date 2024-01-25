@@ -26,6 +26,36 @@ def test_outputs_account_to_file():
                     "my-special-account": {
                         "name": "my-special-account",
                         "email": "my-special-account@thearmitagency.com",
+                        "parent_id": "${data.external.root_id.result.id}",
+                        "close_on_deletion": True,
+                    }
+                }
+            }:
+                return
+    raise Exception("Did not find expected Terraform resource")
+
+
+def test_outputs_account_ou_to_file():
+    write_resources(
+        accounts=[
+            Account(
+                email="my-special-account@thearmitagency.com",
+                name="my-special-account",
+                organizational_unit="Security",
+            )
+        ],
+        organizational_units=[],
+    )
+    with open("accounts.tf") as file:
+        resources = hcl2.load(file)["resource"]
+        for resource in resources:
+            print(resource)
+            if resource == {
+                "aws_organizations_account": {
+                    "my-special-account": {
+                        "name": "my-special-account",
+                        "email": "my-special-account@thearmitagency.com",
+                        "parent_id": "${aws_organizations_organizational_unit.Security.id}",
                         "close_on_deletion": True,
                     }
                 }
@@ -53,6 +83,7 @@ def test_outputs_account_with_space():
                     "Super_Account": {
                         "name": "Super Account",
                         "email": "my-special-account@thearmitagency.com",
+                        "parent_id": "${data.external.root_id.result.id}",
                         "close_on_deletion": True,
                     }
                 }
@@ -76,7 +107,7 @@ def test_outputs_account_import_to_file():
         imports = hcl2.load(file)["import"]
         for i in imports:
             if i == {
-                "to": "${aws_organizations_account.josharmi}",
+                "to": "${aws_organizations_account.my-special-account}",
                 "id": "941044151014",
             }:
                 return

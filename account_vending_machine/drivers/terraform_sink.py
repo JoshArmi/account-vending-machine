@@ -22,6 +22,7 @@ def write_resources(
 resource "aws_organizations_account" "{_massage_string_for_terraform(account.name)}" {{
     name = "{account.name}"
     email = "{account.email}"
+    parent_id = {f"aws_organizations_organizational_unit.{_massage_string_for_terraform(account.organizational_unit)}.id" if account.organizational_unit else "data.external.root_id.result.id"}
     close_on_deletion = true
 }}
 """
@@ -29,7 +30,7 @@ resource "aws_organizations_account" "{_massage_string_for_terraform(account.nam
             if account.import_resource.enabled:
                 lines = f"""
 import {{
-  to = aws_organizations_account.josharmi
+  to = aws_organizations_account.{_massage_string_for_terraform(account.name)}
   id = "{account.import_resource.identifier}"
 }}
 """

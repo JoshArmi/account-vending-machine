@@ -13,6 +13,10 @@ override_request = AccountRequest(
     name="sample-account-preprod", email_override="override@thearmitagency.com"
 )
 
+ou_request = AccountRequest(
+    name="sample-account-preprod", organizational_unit="Security"
+)
+
 import_request = AccountRequest(
     name="sample-account-preprod",
     import_resource=ImportOptions(enabled=True, identifier="941044151014"),
@@ -34,6 +38,13 @@ def test_handle_account_returns_override_email():
     assert (
         handle_account_request(base_config, override_request).email
         == "override@thearmitagency.com"
+    )
+
+
+def test_handle_account_returns_ou():
+    assert (
+        handle_account_request(base_config, ou_request).organizational_unit
+        == "Security"
     )
 
 

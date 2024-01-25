@@ -15,12 +15,14 @@ class AccountRequest(BaseModel):
     name: str
     email_override: Optional[str] = None
     import_resource: ImportOptions = ImportOptions()
+    organizational_unit: Optional[str] = None
 
 
 class Account(BaseModel):
     email: str
     name: str
     import_resource: ImportOptions = ImportOptions()
+    organizational_unit: Optional[str] = None
 
 
 class OrganizationalUnitRequest(BaseModel):
