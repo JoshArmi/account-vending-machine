@@ -19,6 +19,16 @@ base_email: josh@thearmitagency.com
     )
 
 
+def test_handles_configuration_role_name():
+    example_yaml = """
+base_email: josh@thearmitagency.com
+role_name: account-vending-machine
+"""
+    assert read_configuration(example_yaml) == Configuration(
+        base_email="josh@thearmitagency.com", role_name="account-vending-machine"
+    )
+
+
 def test_correctly_translates_account_definition():
     example_yaml = """
 accounts:
@@ -29,6 +39,17 @@ accounts:
             name="test-account",
         )
     ]
+
+
+def test_correctly_translates_management_account():
+    example_yaml = """
+accounts:
+  - name: test-account
+    management_account: True
+"""
+    assert [
+        AccountRequest(name="test-account", management_account=True)
+    ] == read_accounts(example_yaml)[0]
 
 
 def test_correctly_translates_override_account_definition():

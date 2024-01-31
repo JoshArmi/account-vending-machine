@@ -18,14 +18,25 @@ def write_resources(
 ) -> None:
     with open("accounts.tf", "w") as file:
         for account in accounts:
-            lines = f"""
-resource "aws_organizations_account" "{_massage_string_for_terraform(account.name)}" {{
-    name = "{account.name}"
-    email = "{account.email}"
-    parent_id = {f"aws_organizations_organizational_unit.{_massage_string_for_terraform(account.organizational_unit)}.id" if account.organizational_unit else "data.external.root_id.result.id"}
-    close_on_deletion = true
-}}
-"""
+            if account.role_name and not account.management_account:
+                lines = f"""
+    resource "aws_organizations_account" "{_massage_string_for_terraform(account.name)}" {{
+        name = "{account.name}"
+        email = "{account.email}"
+        role_name = "{account.role_name}"
+        parent_id = {f"aws_organizations_organizational_unit.{_massage_string_for_terraform(account.organizational_unit)}.id" if account.organizational_unit else "data.external.root_id.result.id"}
+        close_on_deletion = true
+    }}
+    """
+            else:
+                lines = f"""
+    resource "aws_organizations_account" "{_massage_string_for_terraform(account.name)}" {{
+        name = "{account.name}"
+        email = "{account.email}"
+        parent_id = {f"aws_organizations_organizational_unit.{_massage_string_for_terraform(account.organizational_unit)}.id" if account.organizational_unit else "data.external.root_id.result.id"}
+        close_on_deletion = true
+    }}
+    """
             file.writelines(lines)
             if account.import_resource.enabled:
                 lines = f"""

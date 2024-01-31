@@ -15,4 +15,6 @@ def handle_account_request(config: Configuration, request: AccountRequest) -> Ac
         organizational_unit=request.organizational_unit
         if request.organizational_unit
         else None,
+        role_name=config.role_name if config.role_name else None,
+        management_account=request.management_account,
     )

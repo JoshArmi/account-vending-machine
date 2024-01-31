@@ -26,6 +26,9 @@ def read_accounts(
                 )
                 if "import" in account.keys()
                 else ImportOptions(),
+                management_account=account["management_account"]
+                if "management_account" in account.keys()
+                else False,
             )
             for account in yaml["accounts"]
         ]
@@ -45,4 +48,7 @@ def read_accounts(
 
 def read_configuration(configuration_input: str) -> Configuration:
     yaml = load(configuration_input, Loader)
-    return Configuration(base_email=yaml["base_email"])
+    return Configuration(
+        base_email=yaml["base_email"],
+        role_name=yaml["role_name"] if "role_name" in yaml.keys() else None,
+    )

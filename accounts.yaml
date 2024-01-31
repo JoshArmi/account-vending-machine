@@ -5,5 +5,6 @@ organizational_units:
 accounts:
   - name: josharmi
     email_override: josh.armitage@outlook.com
-  - name: sandbox-alpha
-    email_override: joshscomputerhelp+sandbox.alpha@gmail.com
+    management_account: True
+  - name: sandbox
+    organizational_unit: Workloads
