@@ -4,7 +4,7 @@
       "name": "apply",
       "steps": [
         {
-          "exec": "terraform apply -auto-approve output.tfplan"
+          "exec": "python -m account_vending_machine plan"
         }
       ]
     },
@@ -112,7 +112,7 @@
       "name": "plan",
       "steps": [
         {
-          "exec": "python -m account_vending_machine"
+          "exec": "python -m account_vending_machine plan"
         }
       ]
     },

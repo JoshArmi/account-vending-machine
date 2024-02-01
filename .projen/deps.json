@@ -5,6 +5,10 @@
       "type": "devenv"
     },
     {
+      "name": "boto3-stubs[organizations]",
+      "type": "devenv"
+    },
+    {
       "name": "mypy",
       "type": "devenv"
     },
@@ -24,6 +28,14 @@
     {
       "name": "pytest-watch",
       "type": "devenv"
+    },
+    {
+      "name": "boto3",
+      "type": "runtime"
+    },
+    {
+      "name": "click",
+      "type": "runtime"
     },
     {
       "name": "pydantic",

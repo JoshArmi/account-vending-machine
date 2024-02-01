@@ -83,7 +83,9 @@ dmypy.json
 .pyre/
 .pytype/
 cython_debug/
-*.tf
+accounts.tf
+*.tfstate
+*.tfstate.*
 **/.terraform/*
 output.json
 output.tfplan
